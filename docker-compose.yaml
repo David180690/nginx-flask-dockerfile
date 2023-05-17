@@ -7,4 +7,5 @@ services:
     ports:
       - "80:80"
     volumes:
+    # nginx.conf belemappelem mentsuk /etc/nginx/nginx.conf:ro" ide
       - "./nginx.conf:/etc/nginx/nginx.conf:ro"
