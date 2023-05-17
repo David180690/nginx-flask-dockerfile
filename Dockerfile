@@ -1,13 +1,11 @@
-FROM python:3.9-alpine3.17
+FROM nginx:1.23
 
-WORKDIR /app
+COPY . .
+COPY nginx.conf /etc/nginx/nginx.conf
 
-COPY app.py requirements.txt ./
+RUN apt update && apt install python3 python3-pip -y && \
+pip3 install -r requirements.txt
 
-#COPY app.py requirements.txt .
+CMD ./app.sh
 
-RUN pip3 install -r requirements.txt
-
-CMD python3 app.py
-
-EXPOSE 5000
+EXPOSE 80
